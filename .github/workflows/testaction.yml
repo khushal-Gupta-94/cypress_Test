@@ -28,4 +28,5 @@ jobs:
         with:
          browser: chrome
          headless: true
+         spec : cypress\integration\e2e-test\login-logout.spec.js
       
