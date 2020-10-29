@@ -16,20 +16,16 @@ jobs:
   cypress-run : 
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    container: cypress/browsers:node14.7.0-chrome84
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name : checkout
         uses: actions/checkout@v2
-        
-      - name : Install and verify cypress
-        run : |
-          npm init
-          npm install cypress
           
       - name : Run cypress test
-        run : npm run cypressrun
-        continue-on-error: false
+        uses: cypress-io/github-action@v2
+        with:
+         browser: chrome
+         headless: true
       
