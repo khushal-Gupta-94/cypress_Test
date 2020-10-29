@@ -26,8 +26,8 @@ jobs:
         
       - name : Install and verify cypress
         run : |
-          npm ci
-          $(npm bin)/cypress verify
+          npm init
+          npm install cypress
           
       - name : Run cypress test
         run : npm run cypressrun
