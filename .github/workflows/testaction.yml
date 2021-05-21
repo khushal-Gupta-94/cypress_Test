@@ -5,11 +5,11 @@ name: Cypress testing on workflow.
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the main branch
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
+  # push:
+  #   branches: [main]
+  # pull_request:
+  #   branches: [main]
+  [pull_request]
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -23,12 +23,18 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: checkout
         uses: actions/checkout@v2
-
+      # - name: run pr test cases
+      #   uses: cypress-io/github-action@v2
+      #   with:
+      #     start: npm run start:ci
+      #     env: grepTags=@smoke
       - name: Install and verify cypress
         run: |
           npm ci
           $(npm bin)/cypress verify
 
       - name: Run cypress test
-        run: npm run test
+        run: npx cypress run
+        with:
+          env: tags='pr'
         continue-on-error: false
