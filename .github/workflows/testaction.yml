@@ -34,7 +34,5 @@ jobs:
           $(npm bin)/cypress verify
 
       - name: Run cypress test
-        run: npx cypress run
-        with:
-          env: tags='pr'
+        run: npx cypress run --env tags=pr
         continue-on-error: false
