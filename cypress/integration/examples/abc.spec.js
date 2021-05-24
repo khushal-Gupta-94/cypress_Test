@@ -4,6 +4,7 @@ describe('Run test', () => {
     filterTests(['pr','smoke'], () => {
     it('test 1', () => {
         console.log('Test 1');
+        console.log(Cypress.env('firstName'));
     });
 });
 filterTests(['smoke'], () => {
