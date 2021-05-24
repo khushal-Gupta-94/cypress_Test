@@ -34,7 +34,9 @@ jobs:
           $(npm bin)/cypress verify
 
       - name: Run cypress test
-        run: npx cypress run
+        uses: cypress-io/github-action@v2
         with:
-          env: tags='pr'
+          command: npx cypress run --env tags=pr
+        env:
+          CYPRESS_firstName: Khushal
         continue-on-error: false
